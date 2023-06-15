@@ -1,0 +1,129 @@
+body{
+    background-color: teal; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: 'Kanit', sans-serif;
+}
+
+.fullContainer{
+    width: 300px;
+    background-color: teal; 
+    border-radius: 15px;
+    
+}
+.area{
+    width: 120px;
+    height: 50px;
+    border-radius: 10px;
+    margin: 10px;
+    background-color: #FFF4F4;
+    margin-left: auto;
+    margin-right: auto;
+}
+.tarihArea{
+    width: 150px;
+    height: auto;
+    background-color: aliceblue;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+.logos{
+    width: 30px;
+    margin: 0;
+    padding: 0;
+    border-radius: 50%;
+}
+ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sterlin,
+.dolar,
+.euro,
+.altın{
+    margin-top: 5px;
+    font-size: 13px;
+    
+}
+li{
+    margin-top: 10px;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.tarihText{
+    margin-top: 5px;
+    padding: 5px;
+    padding-top: 0;
+    font-size: 17px;
+}
+.col-6{
+    padding: 0 !important;
+}
+.form-select{
+    width: 120px;
+}
+.section{
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.miktar{
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 155px !important;
+    align-items: center;
+    justify-content: center;
+}
+.btn{
+    width: 45px;
+    background-color: #526D82;
+}
+.btn:hover{
+    background-color: #27374D;
+}
+.fa-solid{
+    color: #000;
+    margin-left: auto;
+    margin-right: auto;
+}
+.moneyArea{
+    margin-top: 15px;
+    width: 120px;
+    background-color: #FFF4F4;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+.moneyText{
+    padding: 8px;
+    font-size: 20px;
+    opacity: 0.8;
+}
+.altTaraf{
+    background-color: #E55807;
+    border-radius: 0px 0px 15px 15px ;
+}
+.ustTaraf{
+    background-color: #068DA9;
+    border-radius: 15px 15px 0px 0px;
+}
+.altIcerik{
+    padding: 20px;
+}
+.ustIcerik{
+    padding: 20px;
+}
+.updateTime{
+    margin-top: 10px;
+    font-size: 19px;
+    text-decoration:underline
+}
