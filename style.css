@@ -13,6 +13,9 @@ body{
     border-radius: 15px;
     
 }
+.container{
+    transition: 1s ease-out;
+}
 .area{
     width: 120px;
     height: 50px;
@@ -29,6 +32,7 @@ body{
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
+    margin-bottom: 6px;
 }
 .logos{
     width: 30px;
@@ -57,17 +61,24 @@ li{
     margin-right: auto;
 
 }
+.area {
+    transition: transform 0.5s ease;
+}
+
+.area:hover {
+    transform: scale(1.2);
+}
 .tarihText{
     margin-top: 5px;
     padding: 5px;
     padding-top: 0;
     font-size: 17px;
 }
-.col-6{
+.col-5{
     padding: 0 !important;
 }
 .form-select{
-    width: 120px;
+    width: 95px;
 }
 .section{
     padding: 0 !important;
@@ -126,4 +137,9 @@ li{
     margin-top: 10px;
     font-size: 19px;
     text-decoration:underline
+}
+.fa-arrow-right-arrow-left{
+    color: #FFF4F4;
+    font-size: 23px !important;
+    margin-top: 8px;
 }
