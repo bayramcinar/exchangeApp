@@ -5,6 +5,9 @@ var altın = document.querySelector(".altın");
 var tarihText = document.querySelector(".tarihText");
 const submitButton = document.getElementById('submitBtn');
 var moneyText = document.querySelector(".moneyText");
+var changeButton = document.querySelector(".fa-arrow-right-arrow-left");
+var sagSelected = document.querySelector(".sagSelected");
+var solSelected = document.querySelector(".solSelected");
 
 
 const selectElementSag = document.getElementById('sag');
@@ -21,8 +24,21 @@ var selectedValueSol ="TRY";
 selectElementSol.addEventListener('change', function() {
     selectedValueSol = selectElementSol.value;
 });
-console.log(selectedValueSag) ;
-console.log(selectedValueSol) ;
+
+function changeInput(){
+    
+    selectedValueSag = selectElementSol.value;
+    selectedValueSol = selectElementSag.value;
+
+    sagSelected.innerHTML = selectedValueSag;
+    solSelected.innerHTML = selectedValueSol;
+    selectElementSol.value = selectedValueSol;
+    selectElementSag.value=selectedValueSag;
+
+}
+
+changeButton.addEventListener('click', changeInput);
+
 var numDolar;
 var numEuro;
 var numSterlin;
@@ -30,7 +46,6 @@ var numSterlin;
 fetch('https://finans.truncgil.com/today.json')
     .then(response => response.json())
     .then(data => {
-        console.log(data);
       
         const dolarFiyat = data.USD.Alış;
         const euroFiyat = data.EUR.Alış;
@@ -59,58 +74,60 @@ submitButton.addEventListener('click', function(event) {
     const inputField = document.querySelector('.form-control');
     const valuee = inputField.value;
     var value = parseFloat(valuee);
-    console.log(typeof(value));
-    console.log(numDolar);
-    console.log(numEuro);
-    console.log(numSterlin);
+    
 
     var convert;
 
-    if (selectedValueSol == "TRY") {
-        if (selectedValueSag == "USD") {
-            convert = value / numDolar;
-        } else if (selectedValueSag == "EUR") {
-            convert = value / numEuro;
-        } else if (selectedValueSag == "GBP") {
-            convert = value / numSterlin;
-        }else if (selectedValueSag == "TRY") {
-            convert = value;
-        }
-    } else if (selectedValueSol == "USD") {
-        if (selectedValueSag == "TRY") {
-            convert = value * numDolar;
-        } else if (selectedValueSag == "EUR") {
-            convert = value * (numDolar / numEuro);
-        } else if (selectedValueSag == "GBP") {
-            convert = value * (numDolar / numSterlin);
-        }else if (selectedValueSag == "USD") {
-            convert = value;
-        }
-    } else if (selectedValueSol == "EUR") {
-        if (selectedValueSag == "TRY") {
-            convert = value * numEuro;
-        } else if (selectedValueSag == "USD") {
-            convert = value * (numEuro / numDolar);
-        } else if (selectedValueSag == "GBP") {
-            convert = value * (numEuro / numSterlin);
-        }
-        else if (selectedValueSag == "EUR") {
-            convert = value;
-        }
-    } else if (selectedValueSol == "GBP") {
-        if (selectedValueSag == "TRY") {
-            convert = value * numSterlin;
-        } else if (selectedValueSag == "USD") {
-            convert = value * (numSterlin / numDolar);
-        } else if (selectedValueSag == "EUR") {
-            convert = value * (numSterlin / numEuro);
-        }else if (selectedValueSag == "GBP") {
-            convert = value;
+    if(isNaN(value)){
+        moneyText.innerHTML = "Invalid";
+    }
+    else{
+        if (selectedValueSol == "TRY") {
+            if (selectedValueSag == "USD") {
+                convert = value / numDolar;
+            } else if (selectedValueSag == "EUR") {
+                convert = value / numEuro;
+            } else if (selectedValueSag == "GBP") {
+                convert = value / numSterlin;
+            }else if (selectedValueSag == "TRY") {
+                convert = value;
+            }
+        } else if (selectedValueSol == "USD") {
+            if (selectedValueSag == "TRY") {
+                convert = value * numDolar;
+            } else if (selectedValueSag == "EUR") {
+                convert = value * (numDolar / numEuro);
+            } else if (selectedValueSag == "GBP") {
+                convert = value * (numDolar / numSterlin);
+            }else if (selectedValueSag == "USD") {
+                convert = value;
+            }
+        } else if (selectedValueSol == "EUR") {
+            if (selectedValueSag == "TRY") {
+                convert = value * numEuro;
+            } else if (selectedValueSag == "USD") {
+                convert = value * (numEuro / numDolar);
+            } else if (selectedValueSag == "GBP") {
+                convert = value * (numEuro / numSterlin);
+            }
+            else if (selectedValueSag == "EUR") {
+                convert = value;
+            }
+        } else if (selectedValueSol == "GBP") {
+            if (selectedValueSag == "TRY") {
+                convert = value * numSterlin;
+            } else if (selectedValueSag == "USD") {
+                convert = value * (numSterlin / numDolar);
+            } else if (selectedValueSag == "EUR") {
+                convert = value * (numSterlin / numEuro);
+            }else if (selectedValueSag == "GBP") {
+                convert = value;
+            }
         }
     }
+    
 
 
-    console.log(convert.toFixed(2));
     moneyText.innerHTML = convert.toFixed(2) +" "+ selectedValueSag;
 
 
