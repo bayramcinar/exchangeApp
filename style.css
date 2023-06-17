@@ -61,12 +61,12 @@ li{
     margin-right: auto;
 
 }
-.area {
-    transition: transform 0.5s ease;
+.Area {
+    transition: transform 0.8s !important;
 }
 
-.area:hover {
-    transform: scale(1.2);
+.Area:hover {
+    transform: scale(1.2) !important;
 }
 .tarihText{
     margin-top: 5px;
