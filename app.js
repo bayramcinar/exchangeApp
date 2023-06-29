@@ -8,7 +8,14 @@ var moneyText = document.querySelector(".moneyText");
 var changeButton = document.querySelector(".fa-arrow-right-arrow-left");
 var sagSelected = document.querySelector(".sagSelected");
 var solSelected = document.querySelector(".solSelected");
-
+var degisimUSD = document.querySelector(".degisimUSD");
+var degisimEUR = document.querySelector(".degisimEUR");
+var degisimGBP = document.querySelector(".degisimGBP");
+var degisimGOLD = document.querySelector(".degisimGOLD");
+var degisimLogoDolar = document.querySelector("#degisimLogoDolar");
+var degisimLogoEuro = document.querySelector("#degisimLogoEuro");
+var degisimLogoSterlin = document.querySelector("#degisimLogoSterlin");
+var degisimLogoAltın = document.querySelector("#degisimLogoAltın");
 
 const selectElementSag = document.getElementById('sag');
 var selectedValueSag = "USD";
@@ -50,6 +57,11 @@ fetch('https://finans.truncgil.com/today.json')
         const dolarFiyat = data.USD.Alış;
         const euroFiyat = data.EUR.Alış;
         const sterlinFiyat = data.GBP.Alış;
+        const dolarDegisim = data.USD.Değişim ;
+        const euroDegisim = data.EUR.Değişim ;
+        const sterlinDegisim = data.GBP.Değişim ;
+        const altınDegisim = data['gram-altin']['Değişim'] ;
+        console.log(typeof(dolarDegisim));
 
         numDolar = parseFloat(dolarFiyat.replace(",", "."));
         numEuro = parseFloat(euroFiyat.replace(",", "."));
@@ -62,7 +74,47 @@ fetch('https://finans.truncgil.com/today.json')
         euro.innerHTML = data.EUR.Alış + " TL";
         sterlin.innerHTML = data.GBP.Alış + " TL";
         altın.innerHTML = altinAlis + " TL";
-
+        if (dolarDegisim.includes("-")) {
+            degisimLogoDolar.classList = "fa-solid fa-arrow-down fa-beat";
+            degisimLogoDolar.style.color = "#e50707";
+            var dolarDegisim1 = dolarDegisim.replace('-', ' ');
+        } else {
+            degisimLogoDolar.classList = "fa-solid fa-arrow-up fa-beat";
+            dolarDegisim1 = dolarDegisim.replace('%', '% ');
+        }
+        
+        if(euroDegisim.includes("-")){
+            degisimLogoEuro.classList = "fa-solid fa-arrow-down fa-beat";
+            degisimLogoEuro.style.color = "#e50707";
+            var euroDegisim1 = euroDegisim.replace('-', ' ');
+        }
+        else{
+            degisimLogoEuro.classList = "fa-solid fa-arrow-up fa-beat";
+            euroDegisim1 = euroDegisim.replace('%', '% ');;
+        }
+        if(sterlinDegisim.includes("-")){
+            degisimLogoSterlin.classList = "fa-solid fa-arrow-down fa-beat";
+            degisimLogoSterlin.style.color = "#e50707";
+            var sterlinDegisim1 = sterlinDegisim.replace('-', ' ');
+        }
+        else{
+            degisimLogoSterlin.classList = "fa-solid fa-arrow-up fa-beat";
+            sterlinDegisim1 = sterlinDegisim.replace('%', '% ');;
+        }
+        if(altınDegisim.includes("-")){
+            degisimLogoAltın.classList = "fa-solid fa-arrow-down fa-beat";
+            degisimLogoAltın.style.color = "#e50707";
+            var altınDegisim1 = altınDegisim.replace('-', ' ');
+            
+        }
+        else{
+            degisimLogoAltın.classList = "fa-solid fa-arrow-up fa-beat";
+            altınDegisim1 = altınDegisim.replace('%', '% ');;
+        }
+        degisimUSD.textContent = dolarDegisim1 ;
+        degisimEUR.textContent = euroDegisim1 ;
+        degisimGBP.textContent = sterlinDegisim1 ;
+        degisimGOLD.textContent = altınDegisim1 ;
     })
     .catch(error => {
         console.error('Hata:', error);
